@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🏠 MADHAN HOSTEL — Management System
 
-## Getting Started
+A modern, responsive Hostel Management System built using AI-powered development tools, React components, and 3D UI elements.
+This system helps hostel owners and administrators manage residents, complaints, rooms, and overall operations efficiently.
 
-First, run the development server:
+Features
+👤 Resident Login
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Secure login for hostel residents
+Access personal dashboard
+View announcements
+Raise complaints or requests
+Check payment or due details
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🛠️ Admin Login
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Dedicated admin access
+Manage resident details
+Add / edit / delete resident information
+Handle complaints efficiently
+Post announcements
+Track hostel occupancy
+Manage room allocations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Interactive Dashboard
+Clean, user-friendly dashboard for both admin & residents
 
-## Learn More
+Shows key metrics such as:
+Total residents
+Room availability
+Pending complaints
+Announcements
+Payments status
+Built using modern UI components & 3D elements for visual clarity
 
-To learn more about Next.js, take a look at the following resources:
+Tech Stack:
+Frontend: React / Next.js (you can edit)
+Styling: Tailwind CSS / Custom Styles
+3D Components: React Bits (MIT Licensed)
+AI Help: Gemini CLI + ChatGPT
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Credits:
 
-## Deploy on Vercel
+This project uses 3D UI components from React Bits (MIT License).
+All other code and interface elements were developed by Madhan T using AI assistance.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+License:
+This project is licensed under the MIT License.
