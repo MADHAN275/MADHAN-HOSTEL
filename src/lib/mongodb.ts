@@ -1,5 +1,9 @@
 import { MongoClient } from 'mongodb';
 
+if (!process.env.MONGODB_URI && process.env.NODE_ENV === 'production') {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+}
+
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const options = {};
 
