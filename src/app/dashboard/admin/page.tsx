@@ -32,7 +32,7 @@ export default function AdminDashboard() {
       <AdminSidebar />
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         <TopBar title="Admin Dashboard" userName="MADHAN" role="Administrator" />
-        <main className="flex-1 overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-secondary-background scrollbar-track-transparent">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8 scrollbar-thin scrollbar-thumb-secondary-background scrollbar-track-transparent">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-3xl font-bold mb-2">Welcome Back, MADHAN!</h1>
             <p className="text-text-secondary mb-8">Here&apos;s what&apos;s happening in your hostel today.</p>

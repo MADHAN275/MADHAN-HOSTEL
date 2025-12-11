@@ -38,26 +38,26 @@ export default function Home() {
   text="MADHAN HOSTEL" 
   disabled={false} 
   speed={3} 
-  className={`text-6xl font-bold text-text-primary mb-12 uppercase ${montserrat.className}`} 
+  className={`text-4xl md:text-6xl font-bold text-text-primary mb-8 md:mb-12 uppercase ${montserrat.className}`} 
 />
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-8 w-full justify-center items-center px-4">
           <SpotlightCard
-            className="p-12 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 cursor-pointer w-80"
+            className="p-8 md:p-12 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 cursor-pointer w-full max-w-sm"
             onClick={() => handleCardClick('admin')}
             spotlightColor="rgba(0, 229, 255, 0.2)"
           >
-            <h2 className="text-4xl font-bold text-text-primary">Admin</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Admin</h2>
           </SpotlightCard>
           <SpotlightCard
-            className="p-12 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 cursor-pointer w-80"
+            className="p-8 md:p-12 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 cursor-pointer w-full max-w-sm"
             onClick={() => handleCardClick('resident')}
             spotlightColor="rgba(0, 229, 255, 0.2)"
           >
-            <h2 className="text-4xl font-bold text-text-primary">Resident</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Resident</h2>
           </SpotlightCard>
         </div>
 
-        <div className="mt-16 p-8 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 w-full max-w-4xl text-left">
+        <div className="mt-8 md:mt-16 p-4 md:p-8 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 w-full max-w-4xl text-left">
           <h3 className="text-2xl font-bold text-text-primary mb-4">Announcements</h3>
           <p className="text-text-secondary">
             - Welcome to the MADHAN HOSTEL. Please select your role to login.

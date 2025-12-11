@@ -117,7 +117,7 @@ export default function ResidentDashboard() {
           userEmail={userEmail}
           onLogout={handleLogout}
         />
-        <main className="flex-1 overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-secondary-background scrollbar-track-transparent">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8 scrollbar-thin scrollbar-thumb-secondary-background scrollbar-track-transparent">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-3xl font-bold mb-2">Welcome, {userName || "Resident"}!</h1>
             <p className="text-text-secondary mb-8">Manage your stay and access services.</p>

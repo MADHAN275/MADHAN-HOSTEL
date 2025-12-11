@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
@@ -37,6 +37,20 @@ export default function ResidentSidebar({ booking }: { booking?: Booking }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsCollapsed(true);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleLogout = () => {
     router.push("/");
   };
@@ -55,15 +69,16 @@ export default function ResidentSidebar({ booking }: { booking?: Booking }) {
     <>
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute top-1/2 -translate-y-1/2 p-1 bg-accent-purple rounded-full text-white z-20"
-        style={{ left: isCollapsed ? '1rem' : '15.5rem', transition: 'left 0.3s ease-in-out' }}
+        className={`absolute top-1/2 -translate-y-1/2 p-1 bg-accent-purple rounded-full text-white z-50 transition-all duration-300 ease-in-out ${
+          isCollapsed ? "left-4" : "left-[15.5rem]"
+        }`}
       >
         {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
       </button>
       <motion.div
         layout
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`relative bg-white/5 backdrop-blur-lg border-r border-white/10 h-screen flex flex-col justify-between z-10 ${
+        className={`fixed md:relative bg-white/5 backdrop-blur-lg border-r border-white/10 h-screen flex flex-col justify-between z-40 ${
           isCollapsed ? "w-0" : "w-64"
         }`}
       >
