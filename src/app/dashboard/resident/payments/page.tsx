@@ -14,47 +14,11 @@ import {
   ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Script from "next/script";
 
 interface Booking {
   roomType: string;
   roomNumber: string;
   createdAt?: string;
-}
-
-interface PaymentResponse {
-  razorpay_order_id: string;
-  razorpay_payment_id: string;
-  razorpay_signature: string;
-}
-
-interface RazorpayOptions {
-  key: string | undefined;
-  amount: number;
-  currency: string;
-  name: string;
-  description: string;
-  order_id: string;
-  handler: (response: PaymentResponse) => void;
-  prefill: {
-    name: string;
-    email: string;
-    contact: string;
-  };
-  theme: {
-    color: string;
-  };
-}
-
-interface RazorpayInstance {
-  on: (event: string, handler: (response: unknown) => void) => void;
-  open: () => void;
-}
-
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
-  }
 }
 
 export default function PaymentsPage() {
@@ -138,83 +102,11 @@ export default function PaymentsPage() {
   };
 
   const handlePayRent = async () => {
-    setIsProcessingPayment(true);
-    try {
-      const response = await fetch("/api/payment/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: rentAmount,
-          currency: "INR",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const order = await response.json();
-
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: order.currency,
-        name: "Madhan Hostel",
-        description: "Rent Payment",
-        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        handler: async function (response: PaymentResponse) {
-          try {
-            const verifyResponse = await fetch("/api/payment/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              }),
-            });
-
-            const verifyData = await verifyResponse.json();
-
-            if (verifyResponse.ok) {
-              alert("Payment Successful!");
-              // Ideally, you would update the UI or redirect here
-            } else {
-              alert("Payment verification failed: " + verifyData.error);
-            }
-          } catch (error) {
-            console.error("Verification error:", error);
-            alert("Payment verification failed due to network error.");
-          }
-        },
-        prefill: {
-          name: userName,
-          email: localStorage.getItem("email") || "",
-          contact: "", // You might want to fetch this from user profile
-        },
-        theme: {
-          color: "#3B82F6",
-        },
-      };
-
-      const rzp1 = new window.Razorpay(options);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      rzp1.on("payment.failed", function (response: any) {
-        alert("Payment Failed: " + response.error.description);
-      });
-      rzp1.open();
-
-    } catch (error) {
-      console.error("Payment error:", error);
-      alert("Something went wrong initializing payment.");
-    } finally {
-        setIsProcessingPayment(false);
-    }
+    alert("Online payments are currently disabled. Please pay at the office.");
   };
 
   return (
     <div className="flex h-screen bg-primary-background text-text-primary overflow-hidden">
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       <ResidentSidebar booking={booking || undefined} />
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         <TopBar title="Payments" userName={userName} />
